@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ListView } from 'react-native';
+import { View, Text, ListView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
 import _ from 'lodash';
@@ -41,11 +41,10 @@ class HomeScreen extends Component {
   };
 
   render() {
-    console.log('Props', this.props);
     const { currentUser } = firebase.auth();
     return (
       <View>
-        <Header headerText='Genetic Results' />
+        <Header headerText='Add your heart rate' />
         <Form style={{ flex: 1 }}>
           <Text>{currentUser.email}</Text>
 
@@ -59,6 +58,7 @@ class HomeScreen extends Component {
 
           <FormField>
             <TextField
+              label='Todays heart rate'
               placeholder='Enter heart rate'
               value={this.props.heartRate}
               onChangeText={text => this.props.geneticUpdate({ prop: 'heartRate', value: text })}
