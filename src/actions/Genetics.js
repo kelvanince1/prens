@@ -9,11 +9,11 @@ export const geneticUpdate = ({ prop, value }) => {
   };
 };
 
-export const createGenetic = ({ heartRate }) => {
+export const createGenetic = ({ heartRate, date }) => {
   return () => {
     const { currentUser } = firebase.auth();
     firebase.database().ref(`/customers/${currentUser.uid}/heartRate`)
-      .push({ heartRate })
+      .push({ heartRate, date })
   };
 };
 

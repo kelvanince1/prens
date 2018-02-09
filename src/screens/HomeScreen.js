@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, ListView } from 'react-native';
 import { connect } from 'react-redux';
+import firebase from 'firebase';
 import _ from 'lodash';
+import moment from 'moment';
 
 import { TextField, FormField, Form, Button, Header } from '../components/UI';
 import { geneticUpdate, createGenetic, fetchGenetics } from '../actions';
@@ -32,28 +34,32 @@ class HomeScreen extends Component {
 
   onButtonPress() {
     const { heartRate } = this.props;
+    var date = moment().format('MMM do YY');
 
-    this.props.createGenetic({ heartRate });
+    this.props.createGenetic({ heartRate, date });
+
   };
 
   render() {
-    console.log('PROPS', this.props);
+    console.log('Props', this.props);
+    const { currentUser } = firebase.auth();
     return (
       <View>
         <Header headerText='Genetic Results' />
-        <Form>
-          <Text>test@test.com</Text>
+        <Form style={{ flex: 1 }}>
+          <Text>{currentUser.email}</Text>
 
           <ListView
             enableEmptySections
+            automaticallyAdjustContentInsets={false}
+            initialListSize={4}
             dataSource={this.dataSource}
             renderRow={this.renderRow}
           />
 
           <FormField>
             <TextField
-              label='Your heart rate'
-              placeholder='0'
+              placeholder='Enter heart rate'
               value={this.props.heartRate}
               onChangeText={text => this.props.geneticUpdate({ prop: 'heartRate', value: text })}
             />
@@ -61,7 +67,7 @@ class HomeScreen extends Component {
 
           <FormField>
             <Button onPress={this.onButtonPress.bind(this)}>
-              Add your heart rate info
+              Add
             </Button>
           </FormField>
         </Form>
