@@ -34,6 +34,6 @@ const styles = {
   }
 };
 
-// I'm not exporting as default since I am exporting all UI components from the inex.js file withing the UI folder. 
+// I'm not exporting as default since I am exporting all UI components from the inex.js file withing the UI folder.
 // ES6 allows the key/value to be reduced to one Button value. It is the same as export { Button: Button }
 export { Button };

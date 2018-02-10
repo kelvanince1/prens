@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import { Actions } from 'react-native-router-flux';
 import { GENETIC_UPDATE , FETCH_GENETICS } from './types';
 
 export const geneticUpdate = ({ prop, value }) => {
@@ -9,11 +8,11 @@ export const geneticUpdate = ({ prop, value }) => {
   };
 };
 
-export const createGenetic = ({ heartRate }) => {
+export const createGenetic = ({ heartRate, date }) => {
   return () => {
     const { currentUser } = firebase.auth();
     firebase.database().ref(`/customers/${currentUser.uid}/heartRate`)
-      .push({ heartRate })
+      .push({ heartRate, date })
   };
 };
 
