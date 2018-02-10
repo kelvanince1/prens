@@ -3,7 +3,6 @@ import { View, Text, ListView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
 import _ from 'lodash';
-import moment from 'moment';
 
 import { TextField, FormField, Form, Button, Header } from '../components/UI';
 import { geneticUpdate, createGenetic, fetchGenetics } from '../actions';
@@ -34,7 +33,13 @@ class HomeScreen extends Component {
 
   onButtonPress() {
     const { heartRate } = this.props;
-    var date = moment().format('MMM do YY');
+    var date = new Date();
+    var month = date.getUTCMonth() + 1; // January starts at 0
+    var day = date.getUTCDate();
+    var year = date.getFullYear();
+
+    var date = month + '/' + day + '/' + year;
+    console.log('Date ', date);
 
     this.props.createGenetic({ heartRate, date });
 
