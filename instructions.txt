@@ -1,0 +1,13 @@
+TO OPEN THE APP, FOLLOW THESE INSTRUCTIONS:
+
+1) git clone the repo in Github.
+2) Run npm install in the root directory
+
+3) For iOS, run =>  npm run iOS
+
+4) For Android, run   npm run Android
+   -- Since Android Studio can be quite buggy and has quite a few problems,
+      I have uploaded the app to the Google Play Store so you can see the Android app there.
+      The app name is PrensChallenge.
+      The link is  https://play.google.com/store/apps/details?id=com.prenetics&hl=en
+      The app is available in USA and Hong Kong.
